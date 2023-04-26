@@ -115,6 +115,7 @@
             Controls.Add(ppCreateBtn);
             Controls.Add(ppAddBtn);
             Controls.Add(pp_playerListBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PlayerProfiles";
             StartPosition = FormStartPosition.CenterParent;

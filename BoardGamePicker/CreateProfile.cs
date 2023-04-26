@@ -28,8 +28,8 @@
 
         private void cpInputNameBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-                SaveNewPlayer(sender,e);
+            if (e.KeyCode == Keys.Enter)
+                SaveNewPlayer(sender, e);
         }
     }
 }

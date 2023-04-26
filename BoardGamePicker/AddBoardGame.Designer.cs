@@ -43,10 +43,10 @@
             abgTimeMin = new TextBox();
             abgSaveBtn = new Button();
             abgCancelBtn = new Button();
-            checkedListBox1 = new CheckedListBox();
-            abgMechanicsList = new CheckedListBox();
             label3 = new Label();
             abgToolTip = new ToolTip(components);
+            abgTypeListBox = new ListBox();
+            abgMechanicsListBox = new ListBox();
             SuspendLayout();
             // 
             // abgNameLabel
@@ -145,7 +145,7 @@
             // 
             // abgSaveBtn
             // 
-            abgSaveBtn.Location = new Point(480, 17);
+            abgSaveBtn.Location = new Point(293, 22);
             abgSaveBtn.Name = "abgSaveBtn";
             abgSaveBtn.Size = new Size(75, 23);
             abgSaveBtn.TabIndex = 13;
@@ -155,31 +155,13 @@
             // 
             // abgCancelBtn
             // 
-            abgCancelBtn.Location = new Point(480, 61);
+            abgCancelBtn.Location = new Point(293, 66);
             abgCancelBtn.Name = "abgCancelBtn";
             abgCancelBtn.Size = new Size(75, 23);
             abgCancelBtn.TabIndex = 14;
             abgCancelBtn.Text = "Cancel";
             abgCancelBtn.UseVisualStyleBackColor = true;
             abgCancelBtn.Click += abgCancelBtn_Click;
-            // 
-            // checkedListBox1
-            // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "h", "hg", "gh", "gh", "ghf", "ghfg", "bnf", "gn", "fgn", "" });
-            checkedListBox1.Location = new Point(112, 158);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(443, 94);
-            checkedListBox1.TabIndex = 15;
-            // 
-            // abgMechanicsList
-            // 
-            abgMechanicsList.FormattingEnabled = true;
-            abgMechanicsList.Items.AddRange(new object[] { "h", "hg", "gh", "gh", "ghf", "ghfg", "bnf", "gn", "fgn", "" });
-            abgMechanicsList.Location = new Point(112, 258);
-            abgMechanicsList.Name = "abgMechanicsList";
-            abgMechanicsList.Size = new Size(443, 94);
-            abgMechanicsList.TabIndex = 17;
             // 
             // label3
             // 
@@ -191,14 +173,34 @@
             label3.Text = "Mechanics:";
             abgToolTip.SetToolTip(label3, "Main mechanics of games such as Dice Rolling, Resource Management etc...");
             // 
+            // abgTypeListBox
+            // 
+            abgTypeListBox.FormattingEnabled = true;
+            abgTypeListBox.ItemHeight = 15;
+            abgTypeListBox.Location = new Point(112, 158);
+            abgTypeListBox.Name = "abgTypeListBox";
+            abgTypeListBox.SelectionMode = SelectionMode.MultiSimple;
+            abgTypeListBox.Size = new Size(382, 94);
+            abgTypeListBox.TabIndex = 18;
+            // 
+            // abgMechanicsListBox
+            // 
+            abgMechanicsListBox.FormattingEnabled = true;
+            abgMechanicsListBox.ItemHeight = 15;
+            abgMechanicsListBox.Location = new Point(112, 261);
+            abgMechanicsListBox.Name = "abgMechanicsListBox";
+            abgMechanicsListBox.SelectionMode = SelectionMode.MultiSimple;
+            abgMechanicsListBox.Size = new Size(382, 94);
+            abgMechanicsListBox.TabIndex = 19;
+            // 
             // AddBoardGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 367);
-            Controls.Add(abgMechanicsList);
+            ClientSize = new Size(506, 367);
+            Controls.Add(abgMechanicsListBox);
+            Controls.Add(abgTypeListBox);
             Controls.Add(label3);
-            Controls.Add(checkedListBox1);
             Controls.Add(abgCancelBtn);
             Controls.Add(abgSaveBtn);
             Controls.Add(label5);
@@ -212,6 +214,7 @@
             Controls.Add(label1);
             Controls.Add(abgNameTextBox);
             Controls.Add(abgNameLabel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddBoardGame";
             StartPosition = FormStartPosition.CenterParent;
@@ -235,9 +238,9 @@
         private TextBox abgTimeMin;
         private Button abgSaveBtn;
         private Button abgCancelBtn;
-        private CheckedListBox checkedListBox1;
-        private CheckedListBox abgMechanicsList;
         private Label label3;
         private ToolTip abgToolTip;
+        private ListBox abgTypeListBox;
+        private ListBox abgMechanicsListBox;
     }
 }

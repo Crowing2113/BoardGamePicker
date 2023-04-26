@@ -61,14 +61,8 @@
             boardGameListGroup = new GroupBox();
             GameList = new ListBox();
             gameInfoGroupPanel = new GroupBox();
-            selGameMechanics = new Label();
-            GIgameMechanics = new Label();
-            selGameType = new Label();
             selGameTime = new Label();
-            label2 = new Label();
             selGamePlayers = new Label();
-            GIgameType = new Label();
-            GIgameAge = new Label();
             GIgameTime = new Label();
             GIgamePlayers = new Label();
             selGameTitle = new Label();
@@ -124,7 +118,7 @@
             menuItem_profilesView.Name = "menuItem_profilesView";
             menuItem_profilesView.Size = new Size(145, 22);
             menuItem_profilesView.Text = "View Profiles";
-            menuItem_profilesView.Click += addPlayerBtn_Click;
+            menuItem_profilesView.Click += menuItem_profilesView_Click;
             // 
             // toolStripSeparator1
             // 
@@ -227,7 +221,7 @@
             // 
             // addPlayerBtn
             // 
-            addPlayerBtn.Location = new Point(9, 272);
+            addPlayerBtn.Location = new Point(9, 359);
             addPlayerBtn.Name = "addPlayerBtn";
             addPlayerBtn.Size = new Size(53, 57);
             addPlayerBtn.TabIndex = 1;
@@ -238,7 +232,7 @@
             // 
             // removePlayerBtn
             // 
-            removePlayerBtn.Location = new Point(68, 272);
+            removePlayerBtn.Location = new Point(68, 359);
             removePlayerBtn.Name = "removePlayerBtn";
             removePlayerBtn.Size = new Size(53, 57);
             removePlayerBtn.TabIndex = 2;
@@ -249,7 +243,7 @@
             // 
             // viewPlayerBtn
             // 
-            viewPlayerBtn.Location = new Point(126, 272);
+            viewPlayerBtn.Location = new Point(126, 359);
             viewPlayerBtn.Name = "viewPlayerBtn";
             viewPlayerBtn.Size = new Size(53, 57);
             viewPlayerBtn.TabIndex = 4;
@@ -267,7 +261,7 @@
             groupBox1.Controls.Add(activePlayerList);
             groupBox1.Location = new Point(12, 27);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(185, 335);
+            groupBox1.Size = new Size(185, 421);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Players";
@@ -285,10 +279,10 @@
             // 
             activePlayerList.FormattingEnabled = true;
             activePlayerList.ItemHeight = 15;
-            activePlayerList.Items.AddRange(new object[] { "testying", "1", "1", "1", "1", "13", "324", "5gdf", "fd", "cnv", "g", "nb", "vcn", "df", "ghn" });
+            activePlayerList.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" });
             activePlayerList.Location = new Point(9, 22);
             activePlayerList.Name = "activePlayerList";
-            activePlayerList.Size = new Size(170, 244);
+            activePlayerList.Size = new Size(170, 319);
             activePlayerList.TabIndex = 0;
             activePlayerList.SelectedIndexChanged += activePlayerList_SelectedIndexChanged;
             // 
@@ -302,7 +296,7 @@
             boardGameListGroup.Controls.Add(playGameBtn);
             boardGameListGroup.Location = new Point(203, 27);
             boardGameListGroup.Name = "boardGameListGroup";
-            boardGameListGroup.Size = new Size(389, 335);
+            boardGameListGroup.Size = new Size(389, 421);
             boardGameListGroup.TabIndex = 2;
             boardGameListGroup.TabStop = false;
             boardGameListGroup.Text = "Board Game List";
@@ -311,77 +305,36 @@
             // 
             GameList.FormattingEnabled = true;
             GameList.ItemHeight = 15;
-            GameList.Items.AddRange(new object[] { "gfd", "gfd", "gfd", "gfd", "gfd" });
+            GameList.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" });
             GameList.Location = new Point(6, 52);
             GameList.Name = "GameList";
-            GameList.Size = new Size(377, 274);
+            GameList.Size = new Size(377, 364);
             GameList.TabIndex = 4;
+            GameList.SelectedIndexChanged += GameList_SelectedIndexChanged;
             // 
             // gameInfoGroupPanel
             // 
-            gameInfoGroupPanel.Controls.Add(selGameMechanics);
-            gameInfoGroupPanel.Controls.Add(GIgameMechanics);
-            gameInfoGroupPanel.Controls.Add(selGameType);
             gameInfoGroupPanel.Controls.Add(selGameTime);
-            gameInfoGroupPanel.Controls.Add(label2);
             gameInfoGroupPanel.Controls.Add(selGamePlayers);
-            gameInfoGroupPanel.Controls.Add(GIgameType);
-            gameInfoGroupPanel.Controls.Add(GIgameAge);
             gameInfoGroupPanel.Controls.Add(GIgameTime);
             gameInfoGroupPanel.Controls.Add(GIgamePlayers);
             gameInfoGroupPanel.Controls.Add(selGameTitle);
             gameInfoGroupPanel.Controls.Add(GIgameTitle);
-            gameInfoGroupPanel.Location = new Point(12, 368);
+            gameInfoGroupPanel.Location = new Point(203, 454);
             gameInfoGroupPanel.Name = "gameInfoGroupPanel";
-            gameInfoGroupPanel.Size = new Size(589, 179);
+            gameInfoGroupPanel.Size = new Size(398, 93);
             gameInfoGroupPanel.TabIndex = 3;
             gameInfoGroupPanel.TabStop = false;
             gameInfoGroupPanel.Text = "Game Info";
             // 
-            // selGameMechanics
-            // 
-            selGameMechanics.AutoSize = true;
-            selGameMechanics.Location = new Point(88, 109);
-            selGameMechanics.Name = "selGameMechanics";
-            selGameMechanics.Size = new Size(113, 15);
-            selGameMechanics.TabIndex = 11;
-            selGameMechanics.Text = "- game mechanics -";
-            // 
-            // GIgameMechanics
-            // 
-            GIgameMechanics.AutoSize = true;
-            GIgameMechanics.Location = new Point(15, 109);
-            GIgameMechanics.Name = "GIgameMechanics";
-            GIgameMechanics.Size = new Size(67, 15);
-            GIgameMechanics.TabIndex = 10;
-            GIgameMechanics.Text = "Mechanics:";
-            // 
-            // selGameType
-            // 
-            selGameType.AutoSize = true;
-            selGameType.Location = new Point(87, 94);
-            selGameType.Name = "selGameType";
-            selGameType.Size = new Size(79, 15);
-            selGameType.TabIndex = 9;
-            selGameType.Text = "- game type -";
-            // 
             // selGameTime
             // 
             selGameTime.AutoSize = true;
-            selGameTime.Location = new Point(87, 79);
+            selGameTime.Location = new Point(87, 64);
             selGameTime.Name = "selGameTime";
             selGameTime.Size = new Size(80, 15);
             selGameTime.TabIndex = 8;
             selGameTime.Text = "- game time -";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(87, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(75, 15);
-            label2.TabIndex = 7;
-            label2.Text = "- game age -";
             // 
             // selGamePlayers
             // 
@@ -392,28 +345,10 @@
             selGamePlayers.TabIndex = 6;
             selGamePlayers.Text = "- game players -";
             // 
-            // GIgameType
-            // 
-            GIgameType.AutoSize = true;
-            GIgameType.Location = new Point(15, 94);
-            GIgameType.Name = "GIgameType";
-            GIgameType.Size = new Size(34, 15);
-            GIgameType.TabIndex = 5;
-            GIgameType.Text = "Type:";
-            // 
-            // GIgameAge
-            // 
-            GIgameAge.AutoSize = true;
-            GIgameAge.Location = new Point(15, 64);
-            GIgameAge.Name = "GIgameAge";
-            GIgameAge.Size = new Size(31, 15);
-            GIgameAge.TabIndex = 4;
-            GIgameAge.Text = "Age:";
-            // 
             // GIgameTime
             // 
             GIgameTime.AutoSize = true;
-            GIgameTime.Location = new Point(15, 79);
+            GIgameTime.Location = new Point(15, 64);
             GIgameTime.Name = "GIgameTime";
             GIgameTime.Size = new Size(36, 15);
             GIgameTime.TabIndex = 3;
@@ -455,6 +390,7 @@
             Controls.Add(boardGameListGroup);
             Controls.Add(groupBox1);
             Controls.Add(MenuController);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = MenuController;
             Name = "GamePicker";
@@ -500,14 +436,8 @@
         private GroupBox gameInfoGroupPanel;
         private Button removePlayerBtn;
         private Button addPlayerBtn;
-        private Label selGameMechanics;
-        private Label GIgameMechanics;
-        private Label selGameType;
         private Label selGameTime;
-        private Label label2;
         private Label selGamePlayers;
-        private Label GIgameType;
-        private Label GIgameAge;
         private Label GIgameTime;
         private Label GIgamePlayers;
         private Label selGameTitle;

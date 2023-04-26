@@ -59,6 +59,7 @@
             csBoardGameList.Name = "csBoardGameList";
             csBoardGameList.Size = new Size(411, 409);
             csBoardGameList.TabIndex = 0;
+            csBoardGameList.SelectedIndexChanged += csBoardGameList_SelectedIndexChanged;
             // 
             // csAddBtn
             // 
@@ -232,10 +233,12 @@
             Controls.Add(csRemoveBtn);
             Controls.Add(csAddBtn);
             Controls.Add(csBoardGameList);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CollectionScreen";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Collection";
+            FormClosed += csCancelBtn_Click;
             gameInfoGroupPanel.ResumeLayout(false);
             gameInfoGroupPanel.PerformLayout();
             ResumeLayout(false);

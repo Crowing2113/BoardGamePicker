@@ -11,6 +11,7 @@
                 {
                     _gamePicker = new GamePicker();
                 }
+                _gamePicker.LoadGamesList();
                 return _gamePicker;
             }
 
@@ -24,6 +25,7 @@
                 {
                     _collScrn = new CollectionScreen();
                 }
+                _collScrn.LoadCollection();
                 return _collScrn;
             }
         }

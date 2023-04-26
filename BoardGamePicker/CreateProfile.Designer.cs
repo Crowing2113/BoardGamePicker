@@ -85,6 +85,7 @@
             Controls.Add(cpSaveBtn);
             Controls.Add(cpInputNameBox);
             Controls.Add(nameLabel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CreateProfile";
             StartPosition = FormStartPosition.CenterParent;
