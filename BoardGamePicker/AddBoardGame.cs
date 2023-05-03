@@ -50,7 +50,23 @@ namespace BoardGamePicker
         private void abgNameTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                SaveNewGame(sender, e);
+                Search(sender, e);
+        }
+
+        private void Search(object sender, EventArgs e)
+        {
+            BoardGame bg = WebTest.FindGame(abgNameTextBox.Text);
+            abgPlayerMin.Text = bg.GetPlayerNum().X.ToString();
+            abgPlayerMax.Text = bg.GetPlayerNum().Y.ToString();
+            abgTimeMin.Text = bg.GetPlayTime().X.ToString();
+            abgTimeMax.Text = bg.GetPlayTime().Y.ToString();
+            foreach (string type in bg.GetTypes())
+                abgTypeListBox.SelectedItems.Add(type);
+
+            foreach (string mechanic in bg.GetMechanics())
+                abgMechanicsListBox.SelectedItems.Add(mechanic);
+            Console.WriteLine("done");
+
         }
     }
 }

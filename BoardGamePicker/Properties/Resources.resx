@@ -117,4 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CreateBG_MechRelationship" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateBG_MechRelationship.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateBG_TypesRelationship" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateBG_TypesRelationship.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateBoardGamesTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateBoardGamesTable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateGamesPlayedLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateGamesPlayedLog.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateMechanicsTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateMechanicsTable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateProfilesTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateProfilesTable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateProfile_LikedGames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateProfile_LikedGames.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CreateTypesTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\CreateTypesTable.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="PopulateMechanics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\PopulateMechanics.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="PopulateTypes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\SQL_Scripts\PopulateTypes.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

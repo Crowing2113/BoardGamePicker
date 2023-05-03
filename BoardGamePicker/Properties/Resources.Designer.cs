@@ -59,5 +59,169 @@ namespace BoardGamePicker.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS BoardGameMechanic(
+        ///    bgTitle TEXT,
+        ///    mName TEXT,
+        ///    FOREIGN KEY (mName) REFERENCES Mechanics(Name)
+        ///);.
+        /// </summary>
+        internal static string CreateBG_MechRelationship {
+            get {
+                return ResourceManager.GetString("CreateBG_MechRelationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS BoardGameType(
+        ///    bgTitle TEXT,
+        ///    tName TEXT,
+        ///    FOREIGN KEY (tName) REFERENCES Types(Name)
+        ///);.
+        /// </summary>
+        internal static string CreateBG_TypesRelationship {
+            get {
+                return ResourceManager.GetString("CreateBG_TypesRelationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS BoardGames
+        ///(BG_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        /// GameTitle TEXT NOT NULL,
+        /// PlayersMin INT NOT NULL,
+        /// PlayersMax INT NOT NULL,
+        /// TimeMin INT NOT NULL,
+        /// TimeMax INT NOT NULL,
+        /// PlayCount INT DEFAULT 0,
+        /// UNIQUE(BG_ID, GameTitle));.
+        /// </summary>
+        internal static string CreateBoardGamesTable {
+            get {
+                return ResourceManager.GetString("CreateBoardGamesTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS gamesLog(
+        ///    GameID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ///    GameTitle TEXT,
+        ///    Players TEXT,
+        ///    FOREIGN KEY(GameTitle) REFERENCES BoardGames(GameTitle)
+        ///    FOREIGN KEY(Players) REFERENCES Profiles(Name)
+        ///);.
+        /// </summary>
+        internal static string CreateGamesPlayedLog {
+            get {
+                return ResourceManager.GetString("CreateGamesPlayedLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS Mechanics
+        ///(M_ID INTEGER UNIQUE,
+        /// Name TEXT UNIQUE,
+        /// PRIMARY KEY (M_ID AUTOINCREMENT )).
+        /// </summary>
+        internal static string CreateMechanicsTable {
+            get {
+                return ResourceManager.GetString("CreateMechanicsTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS LikedGames(
+        ///    ProfileName TEXT,
+        ///    GameTitle TEXT,
+        ///    FOREIGN KEY ProfileName REFERENCES Profiles(Name),
+        ///    FOREIGN KEY GameTitle REFERENCES BoardGames(GameTitle)
+        ///);.
+        /// </summary>
+        internal static string CreateProfile_LikedGames {
+            get {
+                return ResourceManager.GetString("CreateProfile_LikedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS Profiles
+        ///(P_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        /// Name TEXT,
+        /// playCount INT DEFAULT 0,
+        /// UNIQUE (P_ID, Name));.
+        /// </summary>
+        internal static string CreateProfilesTable {
+            get {
+                return ResourceManager.GetString("CreateProfilesTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE TABLE IF NOT EXISTS Types
+        ///(T_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ///Name TEXT,
+        ///UNIQUE(T_ID, Name));.
+        /// </summary>
+        internal static string CreateTypesTable {
+            get {
+                return ResourceManager.GetString("CreateTypesTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///
+        ///INSERT INTO Mechanics (Name)
+        ///VALUES(&apos;Acting&apos;),
+        ///       (&apos;Action Drafting&apos;),
+        ///       (&apos;Action Points&apos;),
+        ///       (&apos;Action Queue&apos;),
+        ///       (&apos;Action Retrieval&apos;),
+        ///       (&apos;Action Timer&apos;),
+        ///       (&apos;Action/Event&apos;),
+        ///       (&apos;Advantage Token&apos;),
+        ///       (&apos;Alliances&apos;),
+        ///       (&apos;Area Majority / Influence&apos;),
+        ///       (&apos;Area Movement&apos;),
+        ///       (&apos;Area-Impulse&apos;),
+        ///       (&apos;Auction Compensation&apos;),
+        ///       (&apos;Auction/Bidding&apos;),
+        ///       (&apos;Auction: Dexterity&apos;),
+        ///       (&apos;Auction: Dutch&apos;),
+        ///       (&apos;Auction: Dutch Prio [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PopulateMechanics {
+            get {
+                return ResourceManager.GetString("PopulateMechanics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO Types (Name)
+        ///VALUES (&apos;Abstract Strategy&apos;),
+        ///        (&apos;Action / Dexterity&apos;),
+        ///        (&apos;Adventure&apos;),
+        ///        (&apos;Age of Reason&apos;),
+        ///        (&apos;American Civil War&apos;),
+        ///        (&apos;American Indian Wars&apos;),
+        ///        (&apos;American Revolutionary War&apos;),
+        ///        (&apos;American West&apos;),
+        ///        (&apos;Ancient&apos;),
+        ///        (&apos;Animals&apos;),
+        ///        (&apos;Arabian&apos;),
+        ///        (&apos;Aviation / Flight&apos;),
+        ///        (&apos;Bluffing&apos;),
+        ///        (&apos;Book&apos;),
+        ///        (&apos;Card Game&apos;),
+        ///        (&apos;Campaign&apos;),
+        ///        (&apos;Children&apos;&apos;s Game&apos;),
+        ///        (&apos;City  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PopulateTypes {
+            get {
+                return ResourceManager.GetString("PopulateTypes", resourceCulture);
+            }
+        }
     }
 }

@@ -67,6 +67,7 @@
             GIgamePlayers = new Label();
             selGameTitle = new Label();
             GIgameTitle = new Label();
+            DELETE_LATER_TXT = new TextBox();
             MenuController.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)databaseHandlerBindingSource).BeginInit();
@@ -218,6 +219,7 @@
             playGameBtn.Text = "Play";
             MainToolTipController.SetToolTip(playGameBtn, "Play the selected board game");
             playGameBtn.UseVisualStyleBackColor = true;
+            playGameBtn.Click += playGameBtn_Click;
             // 
             // addPlayerBtn
             // 
@@ -292,6 +294,7 @@
             // 
             // boardGameListGroup
             // 
+            boardGameListGroup.Controls.Add(DELETE_LATER_TXT);
             boardGameListGroup.Controls.Add(GameList);
             boardGameListGroup.Controls.Add(playGameBtn);
             boardGameListGroup.Location = new Point(203, 27);
@@ -381,6 +384,15 @@
             GIgameTitle.TabIndex = 0;
             GIgameTitle.Text = "Game Title:";
             // 
+            // DELETE_LATER_TXT
+            // 
+            DELETE_LATER_TXT.HideSelection = false;
+            DELETE_LATER_TXT.Location = new Point(87, 22);
+            DELETE_LATER_TXT.Name = "DELETE_LATER_TXT";
+            DELETE_LATER_TXT.Size = new Size(100, 23);
+            DELETE_LATER_TXT.TabIndex = 5;
+            DELETE_LATER_TXT.Text = "Dominion";
+            // 
             // GamePicker
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -402,6 +414,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)databaseHandlerBindingSource).EndInit();
             boardGameListGroup.ResumeLayout(false);
+            boardGameListGroup.PerformLayout();
             gameInfoGroupPanel.ResumeLayout(false);
             gameInfoGroupPanel.PerformLayout();
             ResumeLayout(false);
@@ -447,5 +460,6 @@
         private ToolStripMenuItem toolStripMenuItem1;
         private BindingSource databaseHandlerBindingSource;
         private Label playerCount;
+        private TextBox DELETE_LATER_TXT;
     }
 }

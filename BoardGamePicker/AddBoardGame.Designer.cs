@@ -47,6 +47,7 @@
             abgToolTip = new ToolTip(components);
             abgTypeListBox = new ListBox();
             abgMechanicsListBox = new ListBox();
+            SearchBtn = new Button();
             SuspendLayout();
             // 
             // abgNameLabel
@@ -66,6 +67,7 @@
             abgNameTextBox.PlaceholderText = "Enter name of game";
             abgNameTextBox.Size = new Size(134, 23);
             abgNameTextBox.TabIndex = 1;
+            abgNameTextBox.KeyDown += abgNameTextBox_KeyDown;
             // 
             // abgPlayerMin
             // 
@@ -145,7 +147,7 @@
             // 
             // abgSaveBtn
             // 
-            abgSaveBtn.Location = new Point(293, 22);
+            abgSaveBtn.Location = new Point(419, 22);
             abgSaveBtn.Name = "abgSaveBtn";
             abgSaveBtn.Size = new Size(75, 23);
             abgSaveBtn.TabIndex = 13;
@@ -155,7 +157,7 @@
             // 
             // abgCancelBtn
             // 
-            abgCancelBtn.Location = new Point(293, 66);
+            abgCancelBtn.Location = new Point(419, 66);
             abgCancelBtn.Name = "abgCancelBtn";
             abgCancelBtn.Size = new Size(75, 23);
             abgCancelBtn.TabIndex = 14;
@@ -193,11 +195,22 @@
             abgMechanicsListBox.Size = new Size(382, 94);
             abgMechanicsListBox.TabIndex = 19;
             // 
+            // SearchBtn
+            // 
+            SearchBtn.Location = new Point(261, 22);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(75, 23);
+            SearchBtn.TabIndex = 20;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Click += Search;
+            // 
             // AddBoardGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(506, 367);
+            Controls.Add(SearchBtn);
             Controls.Add(abgMechanicsListBox);
             Controls.Add(abgTypeListBox);
             Controls.Add(label3);
@@ -242,5 +255,6 @@
         private ToolTip abgToolTip;
         private ListBox abgTypeListBox;
         private ListBox abgMechanicsListBox;
+        private Button SearchBtn;
     }
 }

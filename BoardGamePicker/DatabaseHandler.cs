@@ -3,6 +3,12 @@ using System.Data;
 using System.Data.SQLite;
 using System.Numerics;
 using System.Security.AccessControl;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Xml.Linq;
+using System.Configuration.Internal;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
+using System.Resources;
 
 namespace BoardGamePicker
 {
@@ -11,14 +17,15 @@ namespace BoardGamePicker
         NEW,
         LOADED
     }
-
+    
     public class DatabaseHandler
     {
         static DATABASE_STATE state = 0;
-
+        
         static SQLiteConnection database;
         static SQLiteCommand sqlComm;
         static string dbFileLocation = "./assets/Database/gamePicker.db";
+        const string resxFile = @".\Resources.resx";
 
         static List<string> _mechanicsList = new List<string>();
         static List<string> _typesList = new List<string>();
@@ -26,8 +33,8 @@ namespace BoardGamePicker
 
         #region Database
         public static void InitDB()
-        {
-
+        {   
+            
             LoadDB();
             InitTables();
         }
@@ -38,7 +45,24 @@ namespace BoardGamePicker
             CreateGamesTable();
             CreateMechanicsTable();
             CreateTypesTable();
+            CreateRelationshipTables();
+            CreateLogTable();
+        }
 
+        private static void CreateLogTable()
+        {
+            sqlComm.CommandText = Properties.Resources.CreateGamesPlayedLog;
+            sqlComm.ExecuteNonQuery();
+        }
+
+        private static void CreateRelationshipTables()
+        {
+            string s = Properties.Resources.CreateBG_MechRelationship;
+
+            sqlComm.CommandText = Properties.Resources.CreateBG_MechRelationship;
+            sqlComm.ExecuteNonQuery();
+            sqlComm.CommandText = Properties.Resources.CreateBG_TypesRelationship;
+            sqlComm.ExecuteNonQuery();
         }
 
         //Create Database
@@ -60,7 +84,8 @@ namespace BoardGamePicker
         //Creates the Profile table if it does not already exist
         public static void CreateProfileTable()
         {
-            sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/CreateProfilesTable.sql");
+
+            sqlComm.CommandText = Properties.Resources.CreateProfilesTable;
             sqlComm.ExecuteNonQuery();
         }
 
@@ -118,9 +143,10 @@ namespace BoardGamePicker
         #endregion
         #region Board Games
         //Board Games
+        //create the games table if it doesn't exist
         public static void CreateGamesTable()
         {
-            sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/CreateBoardGamesTable.sql");
+            sqlComm.CommandText = Properties.Resources.CreateBoardGamesTable;
             sqlComm.ExecuteNonQuery();
         }
         //Add board game to the database
@@ -128,7 +154,6 @@ namespace BoardGamePicker
         {
             //check if game already exists
             bool exists = false;
-
             foreach(BoardGame bg in CollectionScreen._collectionList)
             {
                 if(bg.GetName() == title)
@@ -137,24 +162,36 @@ namespace BoardGamePicker
                     break;
                 }
             }
-
+            //if the game exists then show an error popup and exit the function
             if (exists)
             {
                 MessageBox.Show("Game already exists in collection", "", MessageBoxButtons.OK);
                 return;
             }
-
+            //create the board game
             BoardGame game = new BoardGame(title,players,playTime,_types,_mechanics);
+            //add it to the database
             sqlComm.CommandText = "INSERT INTO BoardGames (GameTitle, PlayersMin, PlayersMax, TimeMin, TimeMax) VALUES('" + title + "'," + players.X + "," + players.Y + "," + playTime.X + "," + playTime.Y + ");";
+            //add entries to the BoardGameMechanics table
+            foreach(string mechanic in _mechanics)
+            {
+            sqlComm.CommandText += "INSERT INTO BoardGameMechanic VALUES(( SELECT GameTitle FROM BoardGames WHERE BoardGames.GameTitle = '" + title + "'), (SELECT Name FROM Mechanics WHERE Mechanics.Name = '"  + mechanic + "') ) EXCEPT SELECT* FROM BoardGameMechanic;";
+            }
+            //add entries to the BoardGameType table
+            foreach(string type in _types)
+            {
+                sqlComm.CommandText += "INSERT INTO BoardGameType VALUES(( SELECT GameTitle FROM BoardGames WHERE BoardGames.GameTitle = '" + title + "'),(SELECT Name FROM Types WHERE Types.Name = '" + type + "')) EXCEPT SELECT * FROM BoardGameType;";
+            }
             sqlComm.ExecuteNonQuery();
             CollectionScreen._collectionList.Add(game);
         }
-
+        //Remove selected board game from colleciton
         public static void RemoveGame(BoardGame selected)
         {
             sqlComm.CommandText = "DELETE FROM BoardGames WHERE GameTitle = '" + selected.GetName() + "';";
             sqlComm.ExecuteNonQuery();
         }
+        //get the list of board games
         public static List<BoardGame> GetBoardGames()
         {
             List<BoardGame> result = new List<BoardGame>();
@@ -173,7 +210,36 @@ namespace BoardGamePicker
                 result.Add(bg);
             }
             reader.Close();
+
+
             //for starting purposes mechanics and types will be added here seperate until i figure out how to do it gooder
+            foreach(BoardGame bg in result)
+            {
+                //select all rows that have the title as bg from the BoardGameType relationship Database
+                sqlComm.CommandText = "SELECT * FROM BoardGameType WHERE bgTitle = \"" + bg.GetName() + "\";";
+                reader = sqlComm.ExecuteReader();
+                List<string> typesList = new List<string>();
+                List<string> mechanicsList = new List<string>();
+                //read through all rows and add them to the typesList
+                while (reader.Read())
+                {
+                    string type = reader.GetString(1);
+                    typesList.Add(type);
+                }
+                reader.Close();
+                //select all rows that have the title as bg form the BoardGameMechanics relationship Database
+                sqlComm.CommandText = "SELECT * FROM BoardGameMechanic WHERE bgTitle = \"" + bg.GetName() + "\";";
+                reader = sqlComm.ExecuteReader();
+                while (reader.Read())
+                {
+                    string mechanics = reader.GetString(1);
+                    mechanicsList.Add(mechanics);
+                }
+                reader.Close();
+                //set the created temp lists for mechanics and types
+                bg.SetTypes(typesList);
+                bg.SetMechanics(mechanicsList);
+            }
             return result;
         }
         #endregion
@@ -183,9 +249,9 @@ namespace BoardGamePicker
         {
             if (state == DATABASE_STATE.NEW)
             {
-                sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/CreateMechanicsTable.sql");
+                sqlComm.CommandText = Properties.Resources.CreateMechanicsTable;
                 sqlComm.ExecuteNonQuery();
-                sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/PopulateMechanics.sql");
+                sqlComm.CommandText = Properties.Resources.PopulateMechanics;
                 sqlComm.ExecuteNonQuery();
             }
 
@@ -207,9 +273,9 @@ namespace BoardGamePicker
         {
             if (state == DATABASE_STATE.NEW)
             {
-                sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/CreateTypesTable.sql");
+                sqlComm.CommandText = Properties.Resources.CreateTypesTable;
                 sqlComm.ExecuteNonQuery();
-                sqlComm.CommandText = File.ReadAllText("./assets/SQL_Scripts/PopulateTypes.sql");
+                sqlComm.CommandText = Properties.Resources.PopulateTypes;
                 sqlComm.ExecuteNonQuery();
             }
 

@@ -1,4 +1,6 @@
-﻿namespace BoardGamePicker
+﻿using System.Numerics;
+
+namespace BoardGamePicker
 {
     public partial class CollectionScreen : Form
     {
@@ -12,7 +14,7 @@
 
         public void LoadCollection()
         {
-            
+
             selGame = null;
             csBoardGameList.Items.Clear();
             _collectionList = DatabaseHandler.GetBoardGames();
@@ -26,7 +28,7 @@
             }
             else
             {
-                csRemoveBtn .Enabled = false;
+                csRemoveBtn.Enabled = false;
             }
         }
 
@@ -46,14 +48,14 @@
         //----Remove Button----
         private void csRemoveBtn_Click(object sender, EventArgs e)
         {
-            if(selGame == null)
+            if (selGame == null)
             {
                 MessageBox.Show("No game selected to remove", "", MessageBoxButtons.OK);
                 return;
             }
             //Confirm whether user wants to remove game
-            DialogResult dr = MessageBox.Show("Are you sure you wish to delete the game "+selGame.GetName()+" from your collection?", "CAUTION", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if(dr == DialogResult.Yes)
+            DialogResult dr = MessageBox.Show("Are you sure you wish to delete the game " + selGame.GetName() + " from your collection?", "CAUTION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
             {
                 DatabaseHandler.RemoveGame(selGame);
                 LoadCollection();
@@ -64,14 +66,40 @@
 
         private void csBoardGameList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(BoardGame bg in _collectionList)
+            foreach (BoardGame bg in _collectionList)
             {
-                if(bg.GetName() == csBoardGameList.SelectedItem)
+                if (bg.GetName() == csBoardGameList.SelectedItem)
                 {
                     selGame = bg;
                     break;
                 }
             }
+            Vector2 players = selGame.GetPlayerNum();
+            Vector2 time = selGame.GetPlayTime();
+            //----Set Game Info----
+            //name
+            csSelGameTitle.Text = selGame.GetName();
+            //Number of players
+            if (players.X == players.Y)
+                csSelGamePlayers.Text = players.X.ToString();
+            else
+                csSelGamePlayers.Text = players.X + " to " + players.Y;
+            //Play Time
+            if (time.X == time.Y)
+                csSelGameTime.Text = time.X + " Minutes";
+            else
+                csSelGameTime.Text = time.X + " to " + time.Y + " Minutes";
+            //Types
+            csSelGameTypesList.Items.Clear();
+            foreach (string type in selGame.GetTypes())
+                csSelGameTypesList.Items.Add(type);
+
+            //Mechanics
+            csSelGameMechanicsList.Items.Clear();
+            foreach (string mechanics in selGame.GetMechanics())
+
+                csSelGameMechanicsList.Items.Add(mechanics);
+
         }
     }
 }
