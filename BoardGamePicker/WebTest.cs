@@ -94,7 +94,7 @@ namespace BoardGamePicker
 
                 //add the text to the temp type list
                 typeList.Add(el.Text);
-                MessageBox.Show("typeList[" + (i - 1) + "] = " + typeList[i - 1], "Added " + el.Text + " to array at location " + (i - 1), MessageBoxButtons.OK);
+                //MessageBox.Show("typeList[" + (i - 1) + "] = " + typeList[i - 1], "Added " + el.Text + " to array at location " + (i - 1), MessageBoxButtons.OK);
             }
             //Set temp Board game object's type list
             _bg.SetTypes(typeList);
@@ -118,7 +118,7 @@ namespace BoardGamePicker
                 
                 //add the text to the temp mechanic list
                 mechanicsList.Add(el.Text);
-                MessageBox.Show("mechanicsList[" + (i - 1) + "] = " + mechanicsList[i - 1], "Added " + el.Text + " to mechanics List at location " + (i - 1), MessageBoxButtons.OK);
+                //MessageBox.Show("mechanicsList[" + (i - 1) + "] = " + mechanicsList[i - 1], "Added " + el.Text + " to mechanics List at location " + (i - 1), MessageBoxButtons.OK);
             }
             //Set temp Board game object's mechanics list
             _bg.SetMechanics(mechanicsList);

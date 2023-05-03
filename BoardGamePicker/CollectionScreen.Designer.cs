@@ -35,6 +35,8 @@
             csRemoveBtn = new Button();
             csCancelBtn = new Button();
             gameInfoGroupPanel = new GroupBox();
+            csSelGameMechanicsList = new ListBox();
+            csSelGameTypesList = new ListBox();
             GIgameMechanics = new Label();
             csSelGameTime = new Label();
             csSelGameAge = new Label();
@@ -46,8 +48,6 @@
             csSelGameTitle = new Label();
             csGameTitle = new Label();
             csToolTip = new ToolTip(components);
-            csSelGameTypesList = new ListView();
-            csSelGameMechanicsList = new ListView();
             gameInfoGroupPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -114,6 +114,24 @@
             gameInfoGroupPanel.TabIndex = 4;
             gameInfoGroupPanel.TabStop = false;
             gameInfoGroupPanel.Text = "Game Info";
+            // 
+            // csSelGameMechanicsList
+            // 
+            csSelGameMechanicsList.ItemHeight = 15;
+            csSelGameMechanicsList.Location = new Point(251, 112);
+            csSelGameMechanicsList.Name = "csSelGameMechanicsList";
+            csSelGameMechanicsList.SelectionMode = SelectionMode.None;
+            csSelGameMechanicsList.Size = new Size(221, 139);
+            csSelGameMechanicsList.TabIndex = 13;
+            // 
+            // csSelGameTypesList
+            // 
+            csSelGameTypesList.ItemHeight = 15;
+            csSelGameTypesList.Location = new Point(15, 112);
+            csSelGameTypesList.Name = "csSelGameTypesList";
+            csSelGameTypesList.SelectionMode = SelectionMode.None;
+            csSelGameTypesList.Size = new Size(221, 139);
+            csSelGameTypesList.TabIndex = 12;
             // 
             // GIgameMechanics
             // 
@@ -205,22 +223,6 @@
             csGameTitle.TabIndex = 0;
             csGameTitle.Text = "Game Title:";
             // 
-            // csSelGameTypesList
-            // 
-            csSelGameTypesList.Location = new Point(15, 112);
-            csSelGameTypesList.Name = "csSelGameTypesList";
-            csSelGameTypesList.Size = new Size(221, 146);
-            csSelGameTypesList.TabIndex = 12;
-            csSelGameTypesList.UseCompatibleStateImageBehavior = false;
-            // 
-            // csSelGameMechanicsList
-            // 
-            csSelGameMechanicsList.Location = new Point(251, 112);
-            csSelGameMechanicsList.Name = "csSelGameMechanicsList";
-            csSelGameMechanicsList.Size = new Size(221, 146);
-            csSelGameMechanicsList.TabIndex = 13;
-            csSelGameMechanicsList.UseCompatibleStateImageBehavior = false;
-            // 
             // CollectionScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -260,7 +262,7 @@
         private Label csSelGameTitle;
         private Label csGameTitle;
         private ToolTip csToolTip;
-        private ListView csSelGameMechanicsList;
-        private ListView csSelGameTypesList;
+        private ListBox csSelGameMechanicsList;
+        private ListBox csSelGameTypesList;
     }
 }

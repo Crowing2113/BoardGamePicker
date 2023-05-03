@@ -27,6 +27,7 @@ namespace BoardGamePicker
         public GamePicker()
         {
             InitializeComponent();
+            GameList.Items.Clear();
             LoadActivePlayers();
             LoadGamesList();
         }
@@ -144,14 +145,18 @@ namespace BoardGamePicker
         //load the game list
         public void LoadGamesList()
         {
-            FormsProvider.CollectionScrn.LoadCollection();
             GameList.Items.Clear();
+            FormsProvider.CollectionScrn.LoadCollection();
             FilterByPlayers();
-                
+
             //populate the game list
-            foreach(BoardGame bg in viewableGames)
-                GameList.Items.Add(bg.GetName());
-            
+            foreach (BoardGame bg in viewableGames)
+            {
+                if (!GameList.Items.Contains(bg.GetName()))
+                    GameList.Items.Add(bg.GetName());
+            }
+            GameList.Sorted = true;
+
             if (GameList.Items.Count > 0)
             {
                 GameList.SelectedIndex = 0;
@@ -162,24 +167,30 @@ namespace BoardGamePicker
                 selGame = null;
                 playGameBtn.Enabled = false;
             }
+
         }
         //Filter the game list by number of active players
         void FilterByPlayers()
         {
+            viewableGames.Clear();
             int players = int.Parse(playerCount.Text);
-            if(players == 0)
+            if (players == 0)
             {
                 foreach (BoardGame bg in CollectionScreen._collectionList)
                 {
-                    viewableGames.Add(bg);
+                    if (!viewableGames.Contains(bg))
+                        viewableGames.Add(bg);
+
+
                     //GameList.Items.Add(bg.GetName());
                 }
-            } else
+            }
+            else
             {
-                foreach(BoardGame bg in CollectionScreen._collectionList)
+                foreach (BoardGame bg in CollectionScreen._collectionList)
                 {
                     Vector2 pSize = bg.GetPlayerNum();
-                    if(pSize.X <= players && pSize.Y <= players)
+                    if (pSize.X <= players && players <= pSize.Y)
                     {
                         viewableGames.Add(bg);
                         //GameList.Items.Add(bg.GetName());
@@ -252,8 +263,13 @@ namespace BoardGamePicker
 
         private void playGameBtn_Click(object sender, EventArgs e)
         {
-            
+
             //WebTest.FindGame(DELETE_LATER_TXT.Text);
+        }
+
+        private void playerCount_TextChanged(object sender, EventArgs e)
+        {
+            LoadGamesList();
         }
     }
 }

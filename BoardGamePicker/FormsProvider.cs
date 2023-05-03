@@ -11,7 +11,7 @@
                 {
                     _gamePicker = new GamePicker();
                 }
-                _gamePicker.LoadGamesList();
+                //_gamePicker.LoadGamesList();
                 return _gamePicker;
             }
 

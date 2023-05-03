@@ -59,6 +59,7 @@
             activePlayerList = new ListBox();
             databaseHandlerBindingSource = new BindingSource(components);
             boardGameListGroup = new GroupBox();
+            DELETE_LATER_TXT = new TextBox();
             GameList = new ListBox();
             gameInfoGroupPanel = new GroupBox();
             selGameTime = new Label();
@@ -67,7 +68,6 @@
             GIgamePlayers = new Label();
             selGameTitle = new Label();
             GIgameTitle = new Label();
-            DELETE_LATER_TXT = new TextBox();
             MenuController.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)databaseHandlerBindingSource).BeginInit();
@@ -276,6 +276,7 @@
             playerCount.Size = new Size(13, 15);
             playerCount.TabIndex = 6;
             playerCount.Text = "0";
+            playerCount.TextChanged += playerCount_TextChanged;
             // 
             // activePlayerList
             // 
@@ -303,6 +304,15 @@
             boardGameListGroup.TabIndex = 2;
             boardGameListGroup.TabStop = false;
             boardGameListGroup.Text = "Board Game List";
+            // 
+            // DELETE_LATER_TXT
+            // 
+            DELETE_LATER_TXT.HideSelection = false;
+            DELETE_LATER_TXT.Location = new Point(87, 22);
+            DELETE_LATER_TXT.Name = "DELETE_LATER_TXT";
+            DELETE_LATER_TXT.Size = new Size(100, 23);
+            DELETE_LATER_TXT.TabIndex = 5;
+            DELETE_LATER_TXT.Text = "Dominion";
             // 
             // GameList
             // 
@@ -383,15 +393,6 @@
             GIgameTitle.Size = new Size(66, 15);
             GIgameTitle.TabIndex = 0;
             GIgameTitle.Text = "Game Title:";
-            // 
-            // DELETE_LATER_TXT
-            // 
-            DELETE_LATER_TXT.HideSelection = false;
-            DELETE_LATER_TXT.Location = new Point(87, 22);
-            DELETE_LATER_TXT.Name = "DELETE_LATER_TXT";
-            DELETE_LATER_TXT.Size = new Size(100, 23);
-            DELETE_LATER_TXT.TabIndex = 5;
-            DELETE_LATER_TXT.Text = "Dominion";
             // 
             // GamePicker
             // 

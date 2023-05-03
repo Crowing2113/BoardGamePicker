@@ -30,6 +30,7 @@ namespace BoardGamePicker
             {
                 csRemoveBtn.Enabled = false;
             }
+            csBoardGameList.Sorted = true;
         }
 
         private void csCancelBtn_Click(object sender, EventArgs e)
